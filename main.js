@@ -5,6 +5,8 @@ import connectDB from "./lib/db.js";
 
 const app = express();
 const port = 3000;
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 connectDB()
 app.use("/movies", moviesRouter);
 app.get("/", (req, res) => {
