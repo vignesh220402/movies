@@ -1,22 +1,17 @@
-import express from "express"
-const app = express()
-const port = 3000
+import express from "express";
+import moviesRouter from "./routes/movies.js"; // Ensure this path is correct
+const app = express();
+const port = 3000;
 
-app.get('/', (req, res) => {
-  res.json({msg:"hello"})
-})
-app.get("/movies",(req,res)=>{
+app.use("/movies", moviesRouter);
 
+
+app.get("/",(req,res)=>{
+    res.json({msg:"hello"})
 })
-app.post("/movies",(req,res)=>{
-    
-})
-app.put("/movies/:id",(req,res)=>{
-    
-})
-app.delete("/movies/:id",(req,res)=>{
-    
-})
+
+
+
 app.listen(port, () => {
-  console.log(`Example app listening on port http://localhost:${port}`)
-})
+  console.log(`Server is running at http://localhost:${port}`);
+});
